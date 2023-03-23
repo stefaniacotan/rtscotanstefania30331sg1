@@ -1,4 +1,4 @@
-package laboratory2;
+package laboratory2.app1;
 
 public class Fir extends Thread {
     int id;

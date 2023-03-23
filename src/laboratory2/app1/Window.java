@@ -1,4 +1,4 @@
-package laboratory2;
+package laboratory2.app1;
 
 import java.util.ArrayList;
 import javax.swing.*;
