@@ -1,4 +1,6 @@
-import Interfaces.PlaceTemplate;
+package laboratory8.SimpleOERTPN;
+
+import laboratory8.SimpleOERTPN.Interfaces.PlaceTemplate;
 
 public class IntPlace implements PlaceTemplate {
 	Integer value;

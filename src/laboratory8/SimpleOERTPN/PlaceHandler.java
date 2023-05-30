@@ -1,7 +1,9 @@
+package laboratory8.SimpleOERTPN;
+
 import java.util.ArrayList;
 
-import Interfaces.PlaceHandlerTemplate;
-import Interfaces.PlaceTemplate;
+import laboratory8.SimpleOERTPN.Interfaces.PlaceHandlerTemplate;
+import laboratory8.SimpleOERTPN.Interfaces.PlaceTemplate;
 
 public class PlaceHandler implements PlaceHandlerTemplate {
 

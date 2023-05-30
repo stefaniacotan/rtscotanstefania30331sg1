@@ -1,6 +1,7 @@
+package laboratory8.SimpleOERTPN;
 import java.util.Scanner;
 
-import Interfaces.PlaceTemplate;
+import laboratory8.SimpleOERTPN.Interfaces.PlaceTemplate;
 
 public class Controller extends Thread {
 

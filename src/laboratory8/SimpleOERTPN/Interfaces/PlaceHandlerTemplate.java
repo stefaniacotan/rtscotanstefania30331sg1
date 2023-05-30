@@ -1,4 +1,4 @@
-package Interfaces;
+package laboratory8.SimpleOERTPN.Interfaces;
 
 public interface PlaceHandlerTemplate {
 	public void AddPlace(PlaceTemplate place);

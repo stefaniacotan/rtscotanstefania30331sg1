@@ -1,3 +1,4 @@
+package laboratory8.SimpleOERTPN;
 
 public class Robot extends Thread {
 

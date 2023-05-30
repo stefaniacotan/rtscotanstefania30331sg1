@@ -1,4 +1,4 @@
-package Interfaces;
+package laboratory8.SimpleOERTPN.Interfaces;
 
 public interface PlaceTemplate {
 	public String GetPlaceName();

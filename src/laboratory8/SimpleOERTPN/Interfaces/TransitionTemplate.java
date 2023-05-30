@@ -1,4 +1,4 @@
-package Interfaces;
+package laboratory8.SimpleOERTPN.Interfaces;
 
 public interface TransitionTemplate {
 	public void Init(String Name, PlaceHandlerTemplate PH);

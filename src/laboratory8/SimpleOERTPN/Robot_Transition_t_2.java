@@ -1,5 +1,7 @@
-import Interfaces.PlaceHandlerTemplate;
-import Interfaces.TransitionTemplate;
+package laboratory8.SimpleOERTPN;
+
+import laboratory8.SimpleOERTPN.Interfaces.PlaceHandlerTemplate;
+import laboratory8.SimpleOERTPN.Interfaces.TransitionTemplate;
 
 public class Robot_Transition_t_2 implements TransitionTemplate {
 	Integer timeUnitControl = 500;
