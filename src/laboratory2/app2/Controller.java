@@ -1,51 +1,44 @@
-//package laboratory2.app2;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Observable;
-//import java.util.Observer;
-//import java.util.concurrent.ThreadLocalRandom;
-//
-//public class Controller implements ActionListener {
-//
-//    private Fir processorCounter;
-//    private List<Observer> observers;
-//
-//    public Controller() {
-//        processorCounter = new Fir();
-//        observers = new ArrayList<>();
-//    }
-//
-//    public void startThreads() {
-//        int logicalProcessors = Runtime.getRuntime().availableProcessors();
-//        for (int i = 0; i < logicalProcessors; i++) {
-//            Thread thread = new Thread(new ProcessorThread());
-//            thread.setPriority(ThreadLocalRandom.current().nextInt(Thread.MIN_PRIORITY, Thread.MAX_PRIORITY + 1));
-//            thread.start();
-//            observers.add(thread);
-//        }
-//    }
-//
-//    public void registerObservers(Observer observer) {
-//        observers.add(observer);
-//    }
-//
-//    public void notifyObservers() {
-//        for (Observer observer : observers) {
-//            observer.update(processorCounter, null);
-//        }
-//    }
-//
-//    private class ProcessorThread extends Observable implements Runnable {
-//        @Override
-//        public void run();
-//    }
-//
-//    @Override
-//    public void actionPerformed(ActionEvent e) {
-//
-//    }
-//}
-//
-//
+package laboratory2.app2;
+import laboratory2.app2.Model.Fir;
+import laboratory2.app2.Model.UpdateNotification;
+import laboratory2.app2.View.ProgressTracker;
+import laboratory2.app2.View.Window;
+
+import java.util.Observable;
+import java.util.Observer;
+
+public class Controller implements Observer {
+    private Window window;
+
+    public void Start(int threadNumber, int processorLoad) {
+        window = new Window();
+
+        for (int i = 0; i < threadNumber; i++) {
+            ProgressTracker thread = new ProgressTracker(i, 30 * i);
+            window.addThread(thread);
+        }
+
+        for (int i = 0; i < threadNumber; i++) {
+            Fir fir = new Fir(i, processorLoad);
+            fir.addObserver(this);
+
+            Thread firThread = new Thread(fir);
+            if (i + 2 > Thread.MAX_PRIORITY) {
+                System.out.println("Thread " + i + " has a priority of " + (i + 2) + " which is higher than the maximum priority of " + Thread.MAX_PRIORITY);
+            } else {
+                firThread.setPriority(i + 2);
+                firThread.start();
+            }
+        }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        // Make sure the arg is of type ThreadUpdateNotification
+        if (!(arg instanceof UpdateNotification notification)) {
+            return;
+        }
+
+        window.setThreadProgress(notification.id, notification.progress);
+    }
+}
